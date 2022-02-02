@@ -1,0 +1,8 @@
+
+apiBaseURL= https://api.hnpwa.com/v0/
+
+News    = apiBaseURL + '/news/1.json'
+Newest  = apiBaseURL + '/newest/1.json'
+Ask     = apiBaseURL + '/ask/1.json'
+Show    = apiBaseURL + '/show/1.json'
+Jobs    = apiBaseURL + '/jobs/1.json'

@@ -1,0 +1,45 @@
+1. vue-router 설치 
+    - npm i --no vue-router@next
+
+2. vuex 설치 
+    - npm i vuex@next 
+
+3. axio 설치 
+    - npm i axios
+
+
+2. <router-link> Props
+
+    - to : RouteLocationRaw
+        . 링크의 목적지 경로
+        . 클릭시, to prop값은 내부적으로 router.push() 함수에 전달된다.
+
+    - replace : boolean = false
+        . 클릭시, replace prop는 to prop값을 router.push() 호출 대신에 
+          router.replace()를 호출한다.(히스토리 기록을 남기지 않는다.)
+
+    - active-class : string = 'router-link-active'
+        . 링크 활성화시, <a> 에 적용될 클래스 
+        . 기본값은 linkActiveClass 라우터 생성자 옵션을 통해 전역설정 가능
+
+    - aria-current-value : 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false' = 'page'
+        . 링크가 정확히 활성 상태 일때, aria-current 속성에 넘겨지는 값
+
+    - custom : boolean = false 
+        . <router-link> 요소가 <a>엘리먼트의 내용을 감싸지 말아야 하는지 여부.
+        . 사용자 정의 RouterLink 생성을 위해 v-slot을 사용할 때 유용.
+        . 기본적으로 <router-link>는 v-slot을 사용할 때 
+           <a>엘리먼트 내의 컨텐츠를 표시한다.
+        . custom prop을 전달하면 그 행위를 삭제한다.
+
+    - exact-active-class : string = 'router-link-exact-active'
+        . 정확히 일치하는 링크 활성화된 상태일 때 적용되는 CSS 클래스 지정.
+        . 기본값은 linkExactActiveClass 라우터 생성자 옵션을 통해 전역 설정 가능
+
+    - <router-link>의 v-slot 
+        . <router-link>는 scoped slot을 통해 저수준 사용자정의를 나타낸다.
+        .        
+
+
+
+
