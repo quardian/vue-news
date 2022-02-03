@@ -8,6 +8,9 @@ export default {
     setJobs(state, payload){
         state.jobs = payload;
     },  
+    setList(state, payload){
+        state.list = payload;
+    },  
     setUser(state, payload){
         state.user = payload;
     },

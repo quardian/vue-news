@@ -1,4 +1,4 @@
-import {fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo, fetchItemInfo} from '../api';
+import {fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo, fetchItemInfo, fetchList} from '../api';
 
 export default {
     async FETCH_NEWS(context){
@@ -7,6 +7,7 @@ export default {
         try {
             const response = await fetchNewsList();
             commit('setNews', response.data);
+            return response;
         }catch(e){
             console.log(e);
         }
@@ -18,6 +19,7 @@ export default {
         try {
             const response = await fetchAskList();
             commit('setAsks', response.data);
+            return response;
         }catch(e){
             console.log(e);
         }
@@ -29,6 +31,7 @@ export default {
         try {
             const response = await fetchJobsList();
             commit('setJobs', response.data);
+            return response;
         }catch(e){
             console.log(e);
         }
@@ -40,6 +43,7 @@ export default {
         try {
             const response = await fetchUserInfo(username);
             commit('setUser', response.data);
+            return response;
         }catch(e){
             console.log(e);
         }
@@ -51,9 +55,23 @@ export default {
         try {
             const response = await fetchItemInfo(id);
             commit('setItem', response.data);
+            return response;
         }catch(e){
             console.log(e);
         }
     },
+
+    async FETCH_LIST(context, pagename)
+    {
+        const {commit} = context;
+        console.log(context);
+        try {
+            const response = await fetchList(pagename);
+            commit('setList', response.data);
+            return response;
+        }catch(e){
+            console.log(e);
+        }
+    }
 
 }

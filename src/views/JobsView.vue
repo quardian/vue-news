@@ -36,10 +36,17 @@ export default {
       ListItem
     },
 
-  async created()
-  {
-      this.FETCH_JOB();
-  }
+    // created()
+    // {
+    //    this.emitter.emit('start:spinner');
+    //    this.FETCH_JOB()
+    //    .then(()=>{
+    //        this.emitter.emit('end:spinner');
+    //    })
+    //    .catch((err)=>{
+    //        console.log(err);
+    //    });        
+    // }
 
 }
 </script>

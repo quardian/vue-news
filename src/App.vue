@@ -3,16 +3,43 @@
   <transition name="page">
     <router-view></router-view>
   </transition>
+  <Spinner :loading="loadingStatus"></Spinner>
 </template>
 
 <script>
 import ToolBar from './components/ToolBar.vue';
+import Spinner from './components/Spinner.vue';
 
 export default {
   name: 'App',
   components: {
-    ToolBar
-  }
+    ToolBar, Spinner
+  },
+
+  data(){
+    return {
+      loadingStatus : false,
+    }
+  },
+
+  methods:{
+    startSpinner(){
+      this.loadingStatus = true;
+    },
+    endSpinner(){
+      this.loadingStatus = false;
+    },
+  },
+
+  created(){
+    this.emitter.on('start:spinner', this.startSpinner);
+    this.emitter.on('end:spinner', this.endSpinner);
+  },
+  
+  beforeUnmount(){
+    this.emitter.off('start:spinner', this.startSpinner);
+    this.emitter.off('end:spinner', this.endSpinner);
+  },
 }
 </script>
 

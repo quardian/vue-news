@@ -9,6 +9,7 @@ export default createStore({
         jobs:[],
         user:{},
         item:{},
+        list:[],
     },
 
     getters:{

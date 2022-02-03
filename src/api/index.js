@@ -213,6 +213,11 @@ function fetchJobsList()
     return api.get('jobs/1.json');
 }
 
+function fetchList(pagename){
+    return api.get(`${pagename}/1.json`);
+}
+
+
 function fetchUserInfo(username){
     return api.get(`user/${username}.json`);
 }
@@ -221,4 +226,15 @@ function fetchItemInfo(id){
     return api.get(`item/${id}.json`);
 }
 
-export { fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo, fetchItemInfo };
+
+
+
+
+export { 
+    fetchNewsList, 
+    fetchAskList, 
+    fetchJobsList, 
+    fetchList,
+    fetchUserInfo, 
+    fetchItemInfo 
+};

@@ -34,10 +34,17 @@ export default {
     components:{
         ListItem
     },
-    
-    created(){
-       this.FETCH_NEWS();
-    },
+
+    // created(){
+    //    this.emitter.emit('start:spinner');
+    //    this.FETCH_NEWS()
+    //    .then(()=>{
+    //        this.emitter.emit('end:spinner');
+    //    })
+    //    .catch((err)=>{
+    //        console.log(err);
+    //    });
+    // },
 
 }
 
