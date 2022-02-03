@@ -1,17 +1,29 @@
 <template>
   <div>
-      <h1>UserView</h1>
-      <p>id={{user.id}}</p>
-      <p>created={{user.created}}</p>
-      <p>created_time={{user.created_time}}</p>
-      <p>about={{user.about}}</p>
+     <UserProfile :user="user">
+          <template v-slot:username>
+              <div>{{user.id}}</div>
+          </template>
+
+          <template v-slot:time>
+              <div>{{user.created}}</div>
+          </template> 
+
+          <template v-slot:karama>
+              <div>{{user.karma}}</div>
+          </template>           
+     </UserProfile>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex';
+import UserProfile from '../components/UserProfile.vue';
 
 export default {
+    components:{
+      UserProfile
+    },
 
     computed:{
       ...mapState(['user']),

@@ -4,13 +4,20 @@
 
       <!--질문 상세-->
       <section>
-        <div class="user-container">
-          <div> <i class="fas fa-user"></i> </div>
-          <div class="user-description">
-            <router-link :to="`/user/${item.user}`">{{item.user}}</router-link>
-            <div class="time">{{item.time_ago}}</div>
-          </div>     
-        </div> 
+        <UserProfile :user="item">
+          
+          <template v-slot:username>
+              <div>{{item.user}}</div>
+          </template>
+
+          <template v-slot:time>
+              <div>{{item.time_ago}}</div>
+          </template>          
+          
+        </UserProfile>
+      </section>
+
+      <section>
         <h2 v-html="item.title"></h2> 
         <p v-html="item.content"></p>  
       </section>
@@ -30,9 +37,13 @@
 <script>
 
 import { mapActions, mapState } from 'vuex';
+import UserProfile from '../components/UserProfile.vue';
 
 export default {
-  
+  components :{
+    UserProfile,
+  },
+
   computed:{
     ...mapState(['item']),
   },
@@ -52,21 +63,5 @@ export default {
 </script>
 
 <style scoped>
-  .user-container {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-  }
-
-  .fa-user{
-    font-size: 2.5rem;
-  }
-
-  .user-description{
-    padding-left: 8px;
-  }
-
-  .time{
-    font-size: 0.7em;
-  }
+  
 </style>
