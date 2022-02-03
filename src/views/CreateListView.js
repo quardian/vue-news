@@ -17,7 +17,7 @@ export default function createListView(component)
         },
 
         created(){
-            console.log('createListView::created');
+            console.log('createListView::created', this);
             this.emitter.emit('start:spinner');
             const pagename = this.$route.name;
             this.FETCH_LIST(pagename)

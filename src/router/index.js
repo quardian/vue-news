@@ -14,7 +14,14 @@ const routes = [
         path:'/news', 
         name:'news',  
         //component: NewsView 
-        component: createListView(ListView)
+        component: createListView(ListView),
+
+        beforeEnter:(to, from ,next)=>{
+            console.log('to',to);
+            console.log('from',from);
+            console.log('next',next);
+            next();
+        },
     },
     { 
         path:'/ask',  
@@ -37,5 +44,6 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 });
+
 
 export default router;
