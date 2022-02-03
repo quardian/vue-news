@@ -33,5 +33,15 @@ export default {
   opacity: 0;
 }
 
+a {
+  text-decoration: none;
+   text-decoration: underline;
+}
+a:hover{
+  color: #42b883;
+}
 
+a.router-link-exact-active{
+  text-decoration: underline;
+}
 </style>

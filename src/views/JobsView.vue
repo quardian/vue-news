@@ -1,18 +1,13 @@
 <template>
   <div>
       <h1>jobs</h1>
-      <ul>
-        <li v-for="item in jobs" :key="item.id">
-              <a :href="item.url">{{item.title}}</a>
-              <small>{{item.time_ago}} at {{item.domain}}</small>
-        </li>
-      </ul>
+      <ListItem :items="jobs"></ListItem>
   </div>
 </template>
 
 <script>
 import {  mapState, mapGetters, mapMutations, mapActions} from 'vuex';
-
+import ListItem from '../components/ListItem.vue';
 export default {
 
   data(){
@@ -37,6 +32,10 @@ export default {
         }),
     },
 
+    components:{
+      ListItem
+    },
+
   async created()
   {
       this.FETCH_JOB();
@@ -45,6 +44,7 @@ export default {
 }
 </script>
 
-<style>
 
+<style scoped>
+    
 </style>

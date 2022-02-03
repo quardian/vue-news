@@ -1,20 +1,13 @@
 <template>
   <div>
       <h1>ask</h1>
-      <ul>
-          <li v-for="item in asks" :key="item.id">
-              <!-- <a :href="item.url">{{item.title}}</a> -->
-              <router-link :to="`/item/${item.id}`">{{item.title}}</router-link>
-              <small>{{item.time_ago}} by {{item.user}}</small>  
-              
-          </li>
-      </ul>
+      <ListItem :items="asks"></ListItem>
   </div>
 </template>
 
 <script>
 import {  mapState, mapGetters, mapMutations,mapActions } from 'vuex';
-
+import ListItem from '../components/ListItem.vue';
 
 export default {
     data(){
@@ -38,6 +31,10 @@ export default {
         }),
     },
 
+    components:{
+        ListItem
+    },
+
     async created(){
         this.FETCH_ASK();
     }
@@ -45,6 +42,33 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+    .container {
+        margin: 0;
+        padding:0;
+    }
 
+    .item{
+        height: 60px;
+        list-style: none;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        border-bottom: solid 1px #eee;
+    }
+
+    .points{
+        width: 80px;
+        height:60px;
+        line-height: 60px;
+        color:#42b883;
+    }
+    .title{
+        margin: 0;
+        text-align: left;
+    }
+
+    .link-text{
+        color:#828282;
+    }
 </style>
