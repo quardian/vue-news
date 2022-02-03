@@ -10,25 +10,37 @@
 </template>
 
 <script>
-import { fetchJobsList} from '../api/index';
+import { useStore , mapState, mapGetters, mapMutations, mapActions} from 'vuex';
 
 export default {
 
+  store: useStore(),
+
   data(){
     return {
-        jobs : []
+        
     }
   },
 
+    computed:{
+        ...mapState(['jobs']),
+        
+        ...mapGetters(['jobsCount']),
+    },
+
+    methods:{
+        ...mapMutations({
+            setNews: 'setJobs'
+        }),
+
+        ...mapActions({
+            FETCH_JOB : 'FETCH_JOB'
+        }),
+    },
+
   async created()
   {
-    try
-    {
-        const response = await fetchJobsList();
-        this.jobs = response.data;
-    }catch(e){
-        console.log(e);
-    }
+      this.FETCH_JOB();
   }
 
 }

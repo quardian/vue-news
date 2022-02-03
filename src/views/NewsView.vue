@@ -1,8 +1,8 @@
 <template>
   <div>
-      <h1>News</h1>
+      <h1>News {{newsCount}}건</h1>
       <ul>
-          <li v-for="item in news" :key="item.id">
+          <li v-for="item in this.news" :key="item.id">
               {{ item.title }}
               {{ item.url }}
           </li>
@@ -11,24 +11,36 @@
 </template>
 
 <script>
-import {fetchNewsList} from '../api';
+import {useStore, mapState, mapGetters, mapMutations, mapActions} from 'vuex';
 
 export default {
+    store: useStore(),
+
     data(){
         return {
-            news:[]
         }
     },
 
-    async created(){
-        try
-        {
-            const response = await fetchNewsList();
-            this.news = response.data;
-        }catch(e){
-            console.log(e);
-        }
-    }
+    computed:{
+        ...mapState(['news']),
+        
+        ...mapGetters(['newsCount']),
+    },
+
+    methods:{
+        ...mapMutations({
+            setNews: 'setNews'
+        }),
+
+        ...mapActions({
+            FETCH_NEWS : 'FETCH_NEWS'
+        }),
+    },
+
+    created(){
+       this.FETCH_NEWS();
+    },
+
 }
 
 </script>

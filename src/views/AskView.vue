@@ -10,20 +10,35 @@
 </template>
 
 <script>
-import {fetchAskList} from '../api';
+import {  useStore, mapState, mapGetters, mapMutations,mapActions } from 'vuex';
+
 
 export default {
+    store : useStore(),
+
     data(){
         return {
-            asks : []
         }
     },
 
-    async created(){
-        const response = await fetchAskList();
-        console.log(response);
+    computed:{
+        ...mapState(['asks']),
+        
+        ...mapGetters(['asksCount']),
+    },
 
-        this.asks = response.data;
+    methods:{
+        ...mapMutations({
+            setAsks: 'setAsks'
+        }),
+
+        ...mapActions({
+            FETCH_ASK : 'FETCH_ASK'
+        }),
+    },
+
+    async created(){
+        this.FETCH_ASK();
     }
 
 }
