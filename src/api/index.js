@@ -200,17 +200,25 @@ api.interceptors.response.use(
     });
 
 
-async function fetchNewsList() {
-    return await api.get('news/1.json');
+function fetchNewsList() {
+    return api.get('news/1.json');
 }
 
-async function fetchAskList(){
-    return await api.get('ask/1.json');
+function fetchAskList(){
+    return api.get('ask/1.json');
 }
 
-async function fetchJobsList()
+function fetchJobsList()
 {
-    return await api.get('/jobs/1.json');
+    return api.get('jobs/1.json');
 }
 
-export { fetchNewsList, fetchAskList, fetchJobsList };
+function fetchUserInfo(username){
+    return api.get(`user/${username}.json`);
+}
+
+function fetchItemInfo(id){
+    return api.get(`item/${id}.json`);
+}
+
+export { fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo, fetchItemInfo };

@@ -1,6 +1,8 @@
 <template>
   <ToolBar></ToolBar>
-  <router-view></router-view>
+  <transition name="page">
+    <router-view></router-view>
+  </transition>
 </template>
 
 <script>
@@ -22,4 +24,14 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+}
+
+.page-enter-from, .page-leave-to {
+  opacity: 0;
+}
+
+
 </style>

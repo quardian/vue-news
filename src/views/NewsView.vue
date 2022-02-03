@@ -3,19 +3,19 @@
       <h1>News {{newsCount}}건</h1>
       <ul>
           <li v-for="item in this.news" :key="item.id">
-              {{ item.title }}
-              {{ item.url }}
+              <a :href="item.url">{{item.title}}</a>
+              <small>{{item.time_ago}} by 
+                  <router-link :to="`/user/${item.user}`">{{item.user}}</router-link>
+              </small>
           </li>
       </ul>
   </div>
 </template>
 
 <script>
-import {useStore, mapState, mapGetters, mapMutations, mapActions} from 'vuex';
+import { mapState, mapGetters, mapMutations, mapActions} from 'vuex';
 
 export default {
-    store: useStore(),
-
     data(){
         return {
         }
@@ -23,7 +23,7 @@ export default {
 
     computed:{
         ...mapState(['news']),
-        
+
         ...mapGetters(['newsCount']),
     },
 

@@ -3,18 +3,17 @@
       <h1>jobs</h1>
       <ul>
         <li v-for="item in jobs" :key="item.id">
-          {{item.title}}
+              <a :href="item.url">{{item.title}}</a>
+              <small>{{item.time_ago}} at {{item.domain}}</small>
         </li>
       </ul>
   </div>
 </template>
 
 <script>
-import { useStore , mapState, mapGetters, mapMutations, mapActions} from 'vuex';
+import {  mapState, mapGetters, mapMutations, mapActions} from 'vuex';
 
 export default {
-
-  store: useStore(),
 
   data(){
     return {

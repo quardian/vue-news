@@ -3,19 +3,20 @@
       <h1>ask</h1>
       <ul>
           <li v-for="item in asks" :key="item.id">
-              {{item.id}} - {{item.title}}
+              <!-- <a :href="item.url">{{item.title}}</a> -->
+              <router-link :to="`/item/${item.id}`">{{item.title}}</router-link>
+              <small>{{item.time_ago}} by {{item.user}}</small>  
+              
           </li>
       </ul>
   </div>
 </template>
 
 <script>
-import {  useStore, mapState, mapGetters, mapMutations,mapActions } from 'vuex';
+import {  mapState, mapGetters, mapMutations,mapActions } from 'vuex';
 
 
 export default {
-    store : useStore(),
-
     data(){
         return {
         }
